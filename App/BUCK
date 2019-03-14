@@ -27,6 +27,7 @@ first_party_library_dependencies = [
     "//Libraries/SwiftReliesOnCXX:SwiftReliesOnCXX",
     "//Libraries/SwiftWithAssets:SwiftWithAssets",
     "//Libraries/SwiftWithMLModel:SwiftWithMLModel",
+    "//Libraries/SwiftFramework:SwiftFrameworkModule"
 ]
 
 # Build Phase scripts need to be added as dependencies.
@@ -131,7 +132,8 @@ apple_bundle(
     deps = [
         # For "#watch", https://buckbuild.com/rule/apple_bundle.html#deps
         ":ExampleWatchApp#watch",
-        ":ExampleMessageExtension"
+        ":ExampleMessageExtension",
+        "//Libraries/SwiftFramework:SwiftFramework",
     ]
 )
 
@@ -244,6 +246,10 @@ apple_binary(
         "-Xlinker",
         "@executable_path/../../Frameworks",
     ],
+
+    deps = [
+        "//Libraries/SwiftFramework:SwiftFrameworkModule",
+    ]
 )
 
 apple_bundle(
