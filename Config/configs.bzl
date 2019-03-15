@@ -60,6 +60,19 @@ def app_binary_configs(name):
     binary_config = config_with_updated_linker_flags(binary_config, ALL_LOAD_LINKER_FLAG)
     return configs_with_config(binary_config)
 
+def framework_configs(name, has_objective_c = False):
+    framework_specific_config = {
+        "SWIFT_COMPILATION_MODE": "wholemodule",
+        "PRODUCT_BUNDLE_IDENTIFIER": bundle_identifier(name),
+        "SWIFT_INSTALL_OBJC_HEADER": "YES" if has_objective_c else "NO",
+    }
+    framework_config = SHARED_CONFIGS + framework_specific_config
+    configs = {
+        "Debug": framework_config,
+        "Profile": framework_config,
+    }
+    return configs
+
 def test_configs(name):
     binary_specific_config = info_plist_substitutions(name)
     binary_config = SHARED_CONFIGS + binary_specific_config
