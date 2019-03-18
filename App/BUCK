@@ -55,8 +55,11 @@ apple_library(
         ":ExampleAppResource",
         ":ExampleAppAssets",
     ] 
-    + first_party_library_dependencies  
-    + build_phase_scripts,
+    + first_party_library_dependencies 
+    + build_phase_scripts
+    + [
+        "//Libraries/SwiftShared:SwiftSharedFramework",
+    ],
 )
 
 apple_binary(
