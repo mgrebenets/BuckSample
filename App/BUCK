@@ -83,6 +83,7 @@ apple_binary(
         "//App/...",
     ],
     configs = app_binary_configs("ExampleApp"),
+    entitlements_file = "ExampleApp.entitlements",
     swift_version = "4.0",
     srcs = [
         "BuckSupportFiles/Dummy.swift",
