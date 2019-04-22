@@ -66,6 +66,9 @@ apple_library(
         "AppDelegate.swift",
         ":BuckPhotoIntentInterface",
     ],
+    extra_xcode_files = [
+        "Intents.intentdefinition",
+    ],
     tests = app_tests,
     deps = [
         "//Pods:CryptoSwift",
