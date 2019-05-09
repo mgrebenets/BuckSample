@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     label.sizeToFit()
     label.center = self.view.center
 
-    #if swift(>=4.2)
+    #if swift(>=4.0)
       let siriButton = INUIAddVoiceShortcutButton(style: .black)
       siriButton.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(siriButton)
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     let o = Objc1()
     print("Objc1: %s", o)
     Objc1.sayHello("Michael")
-    
+
     // C++ wrapped in Objective-C class defined in Cpp1
     let cpp = Cpp1()
     print("class method:  1 + 2 =", cpp.add(1, with: 2))
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
   @available(iOS 12.0, *)
   @objc
   dynamic private func addToSiri(_ sender: Any) {
-    #if swift(>=4.2)
+    #if swift(>=4.0)
     let intent = BuckPhotoIntent()
     intent.suggestedInvocationPhrase = "Show me a buck"
     if let shortcut = INShortcut(intent: intent) {
